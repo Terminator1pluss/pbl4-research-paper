@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMB Framework | Aaryan Kalra</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Space Mono', 'monospace'],
+                    },
+                    colors: {
+                        darkbg: '#030712',
+                        cardbg: '#0f172a',
+                        cardborder: '#1e293b',
+                        accentblue: '#3b82f6',
+                        accentpurple: '#8b5cf6',
+                        accentgreen: '#10b981'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #030712; color: #f8fafc; }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #030712; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #334155; }
+
+        /* Chart Animations */
+        .bar-fill {
+            transition: height 1.5s ease-out;
+            animation: loadBar 1.5s ease-out forwards;
+        }
+        @keyframes loadBar {
+            from { height: 0; }
+        }
+
+        /* Subtle Glow Effects */
+        .glow-blue { box-shadow: 0 0 40px -10px rgba(59, 130, 246, 0.15); }
+        .glow-purple { box-shadow: 0 0 40px -10px rgba(139, 92, 246, 0.15); }
+
+        /* Pipeline Connecting Lines */
+        .pipeline-line::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -50%;
+            width: 100%;
+            height: 2px;
+            background: #1e293b;
+            z-index: 0;
+        }
+        @media (max-width: 768px) {
+            .pipeline-line::after { display: none; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-accentblue selection:text-white">
+
+    <!-- Sticky Navbar -->
+    <nav class="fixed top-0 w-full z-50 bg-darkbg/80 backdrop-blur-md border-b border-cardborder transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Left: Branding -->
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
+                        <i class="fa-solid fa-shield-halved text-white text-lg"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-white font-bold tracking-tight leading-none text-lg">PBL 2026</h1>
+                        <p class="text-[10px] text-slate-400 font-mono tracking-widest uppercase mt-1">Dept. of Computer Science & Engineering</p>
+                    </div>
+                </div>
+                
+                <!-- Right: Links -->
+                <div class="hidden md:flex items-center space-x-8 text-xs font-semibold tracking-widest uppercase text-slate-400">
+                    <a href="#problem" class="hover:text-white transition-colors">Problem</a>
+                    <a href="#methodology" class="hover:text-white transition-colors">Methodology</a>
+                    <a href="#results" class="hover:text-white transition-colors">Results</a>
+                    <a href="#team" class="hover:text-white transition-colors">Team</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-24 px-6 lg:px-8 max-w-7xl mx-auto space-y-32">
+
+        <!-- Hero Section -->
+        <section class="text-center pt-10 pb-16 relative">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-600/20 blur-[120px] rounded-full pointer-events-none"></div>
+            
+            <p class="text-slate-400 font-mono text-sm tracking-[0.2em] mb-6 uppercase">23FE10CSE00739 • Aaryan Kalra</p>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-slate-400 tracking-tight mb-8">
+                THE CMB FRAMEWORK
+            </h1>
+            <p class="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
+                A Hybrid Chaotic–Metaheuristic–Blockchain Architecture for Verifiable Transform-Domain Image Steganography.
+            </p>
+        </section>
+
+        <!-- Problem & Lit Review Section -->
+        <section id="problem" class="scroll-mt-32">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Left: Problem Statement -->
+                <div class="bg-cardbg border border-cardborder rounded-3xl p-10 glow-blue h-full flex flex-col justify-center">
+                    <h2 class="text-3xl font-bold text-white mb-6">Problem Statement</h2>
+                    <p class="text-slate-300 text-lg leading-relaxed mb-6">
+                        The rapid proliferation of unsecured digital networks has made robust information assurance critical. While cryptography ensures confidentiality, it transforms data into statistically anomalous ciphertext, acting as a beacon that invites targeted traffic analysis (violating Kerckhoffs' principle).
+                    </p>
+                    <p class="text-slate-300 text-lg leading-relaxed">
+                        Steganography hides the communication's existence but is rigorously governed by the <strong>capacity-imperceptibility-robustness trade-off</strong>. Furthermore, existing steganographic frameworks possess a critical vulnerability: the implicit assumption of a benign transmission channel. They inherently lack out-of-band mechanisms to detect post-transmission carrier tampering across unsecured networks.
+                    </p>
+                </div>
+
+                <!-- Right: Lit Review & Gaps -->
+                <div class="flex flex-col gap-8">
+                    <!-- Lit Review -->
+                    <div class="bg-cardbg border border-cardborder rounded-3xl p-8 hover:border-slate-600 transition-colors">
+                        <div class="flex items-center gap-3 mb-4">
+                            <i class="fa-solid fa-book-open text-slate-400"></i>
+                            <h3 class="text-sm font-bold tracking-widest uppercase text-slate-400">Literature Review</h3>
+                        </div>
+                        <p class="text-slate-300 leading-relaxed text-sm">
+                            Existing models (e.g., Khalil et al., 2024) utilizing spatial-domain chaotic maps suffer from severe compounding distortions at higher payloads, restricting PSNR to ~30 dB. Alternatively, models utilizing Genetic Algorithms in transform domains (Darani et al., 2024) are susceptible to premature convergence, lacking local refinement to achieve exact value-matching.
+                        </p>
+                    </div>
+                    
+                    <!-- Research Gap -->
+                    <div class="bg-cardbg border border-accentpurple/30 rounded-3xl p-8 glow-purple">
+                        <div class="flex items-center gap-3 mb-4">
+                            <i class="fa-solid fa-lightbulb text-accentpurple"></i>
+                            <h3 class="text-sm font-bold tracking-widest uppercase text-accentpurple">Research Gap & Innovation</h3>
+                        </div>
+                        <p class="text-slate-300 leading-relaxed text-sm">
+                            The CMB Framework directly addresses the total absence of post-transmission integrity verification in current literature. It mathematically unifies continuous-time 3D chaotic dynamical systems, evolutionary combinatorial optimization (Hybrid GA-TS), and distributed ledger technology (Ethereum PoA) for verifiable data transmission.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- System Methodology -->
+        <section id="methodology" class="scroll-mt-32 pt-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-extrabold text-white tracking-tight uppercase mb-4">System Methodology</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Pipeline Graphic -->
+            <div class="bg-cardbg border border-cardborder rounded-3xl p-10 mb-8 overflow-x-auto">
+                <h3 class="text-xs font-mono tracking-[0.2em] text-slate-500 uppercase text-center mb-12">Architecture Pipeline</h3>
+                
+                <div class="flex flex-col md:flex-row justify-between items-center min-w-[800px] relative px-10">
+                    
+                    <!-- Step 1 -->
+                    <div class="flex flex-col items-center relative z-10 pipeline-line w-full md:w-auto mb-8 md:mb-0">
+                        <div class="w-16 h-16 rounded-2xl bg-slate-800 border-2 border-blue-500 flex items-center justify-center mb-4 shadow-[0_0_20px_rgba(59,130,246,0.3)]">
+                            <i class="fa-solid fa-shuffle text-blue-400 text-xl"></i>
+                        </div>
+                        <h4 class="text-white font-bold text-sm uppercase tracking-wide">Chaotic Scrambling</h4>
+                        <p class="text-xs text-slate-500 mt-2 text-center max-w-[140px]">3D Lorenz Map bit-level permutation</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="flex flex-col items-center relative z-10 pipeline-line w-full md:w-auto mb-8 md:mb-0">
+                        <div class="w-16 h-16 rounded-2xl bg-slate-800 border-2 border-purple-500 flex items-center justify-center mb-4 shadow-[0_0_20px_rgba(139,92,246,0.3)]">
+                            <i class="fa-solid fa-layer-group text-purple-400 text-xl"></i>
+                        </div>
+                        <h4 class="text-white font-bold text-sm uppercase tracking-wide">IWT Decomposition</h4>
+                        <p class="text-xs text-slate-500 mt-2 text-center max-w-[140px]">Haar lifting scheme (Integer to Integer)</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="flex flex-col items-center relative z-10 pipeline-line w-full md:w-auto mb-8 md:mb-0">
+                        <div class="w-16 h-16 rounded-2xl bg-slate-800 border-2 border-pink-500 flex items-center justify-center mb-4 shadow-[0_0_20px_rgba(236,72,153,0.3)]">
+                            <i class="fa-solid fa-microchip text-pink-400 text-xl"></i>
+                        </div>
+                        <h4 class="text-white font-bold text-sm uppercase tracking-wide">Hybrid GA-TS</h4>
+                        <p class="text-xs text-slate-500 mt-2 text-center max-w-[140px]">Global GA search + Tabu local value-matching</p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="flex flex-col items-center relative z-10 w-full md:w-auto">
+                        <div class="w-16 h-16 rounded-2xl bg-slate-800 border-2 border-green-500 flex items-center justify-center mb-4 shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+                            <i class="fa-brands fa-ethereum text-green-400 text-2xl"></i>
+                        </div>
+                        <h4 class="text-white font-bold text-sm uppercase tracking-wide">Ledger Anchoring</h4>
+                        <p class="text-xs text-slate-500 mt-2 text-center max-w-[140px]">Keccak-256 hash on Ethereum PoA</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Dataset & Input Box -->
+            <div class="bg-cardbg border border-cardborder rounded-2xl p-8 flex flex-col md:flex-row items-start gap-6">
+                <div class="bg-blue-500/10 p-4 rounded-xl shrink-0">
+                    <i class="fa-solid fa-database text-blue-500 text-2xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-3">Dataset & Implementation Parameters</h3>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-green-500 mt-1 text-xs"></i>
+                            <span><strong>Source Media:</strong> USC-SIPI Image Database (Standard 512x512 8-bit grayscale cover images).</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-green-500 mt-1 text-xs"></i>
+                            <span><strong>Payload capacity:</strong> Tested at high density of 2.25 bits per pixel (bpp).</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-green-500 mt-1 text-xs"></i>
+                            <span><strong>Environment:</strong> MATLAB R2023b (Signal Processing/Optimization) & Python 3.10 / Web3.py (Blockchain interfacing).</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Execution / Demo Box -->
+        <section class="max-w-3xl mx-auto">
+            <div class="bg-[#020617] border border-green-500/30 rounded-3xl p-10 text-center shadow-[0_0_30px_rgba(16,185,129,0.05)]">
+                <h3 class="text-xs font-mono tracking-widest text-green-500 uppercase mb-8">Live Execution</h3>
+                <h2 class="text-3xl font-bold text-white mb-4">Code & Implementation</h2>
+                <p class="text-slate-400 text-sm mb-8 max-w-md mx-auto">
+                    Full mathematical implementation, algorithm notebooks, and smart contract deployment scripts are available for review.
+                </p>
+                <a href="#" class="inline-flex items-center gap-3 bg-green-500/10 hover:bg-green-500/20 border border-green-500 text-green-400 px-6 py-3 rounded-full font-mono text-sm transition-colors mb-6">
+                    <i class="fa-brands fa-github text-lg"></i>
+                    View on GitHub
+                </a>
+                <div class="font-mono text-xs text-slate-600 select-all">
+                    >>>>>>> f02e4a0 (git remote -v)
+                </div>
+            </div>
+        </section>
+
+        <!-- Results & Analysis -->
+        <section id="results" class="scroll-mt-32 pt-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-extrabold text-white tracking-tight uppercase mb-4">Results & Analysis</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <!-- Bar Chart Area (Left) -->
+                <div class="lg:col-span-7 bg-cardbg border border-cardborder rounded-3xl p-8 flex flex-col">
+                    <h3 class="text-sm font-bold tracking-widest uppercase text-slate-400 mb-8">PSNR Comparison (at 2.25 bpp)</h3>
+                    
+                    <div class="flex-grow flex items-end justify-around gap-4 h-64 relative pt-6 border-b border-slate-700/50 pb-2 px-4">
+                        <!-- Y-Axis lines/labels (simplified visually) -->
+                        <div class="absolute left-0 top-0 h-full flex flex-col justify-between text-[10px] font-mono text-slate-600 pb-2">
+                            <span>60 dB</span>
+                            <span>45 dB</span>
+                            <span>30 dB</span>
+                            <span>0 dB</span>
+                        </div>
+
+                        <!-- Bar 1: Khalil -->
+                        <div class="flex flex-col items-center gap-3 z-10 w-24 group">
+                            <div class="w-full bg-slate-800 rounded-t-lg relative flex items-end justify-center bar-fill" style="height: 50%;">
+                                <span class="absolute -top-6 text-xs font-mono text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity">~30.00</span>
+                            </div>
+                            <span class="text-[10px] font-bold text-slate-400 uppercase text-center leading-tight">Khalil et al.<br>(Spatial)</span>
+                        </div>
+
+                        <!-- Bar 2: Darani -->
+                        <div class="flex flex-col items-center gap-3 z-10 w-24 group">
+                            <div class="w-full bg-slate-700 rounded-t-lg relative flex items-end justify-center bar-fill" style="height: 75%;">
+                                <span class="absolute -top-6 text-xs font-mono text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity">47.88</span>
+                            </div>
+                            <span class="text-[10px] font-bold text-slate-400 uppercase text-center leading-tight">Darani et al.<br>(Framelet)</span>
+                        </div>
+
+                        <!-- Bar 3: CMB (Ours) -->
+                        <div class="flex flex-col items-center gap-3 z-10 w-24 group">
+                            <div class="w-full bg-gradient-to-t from-blue-600 to-blue-400 rounded-t-lg relative flex items-end justify-center bar-fill shadow-[0_0_15px_rgba(59,130,246,0.5)]" style="height: 90%;">
+                                <span class="absolute -top-6 text-xs font-mono text-white font-bold">54.17</span>
+                            </div>
+                            <span class="text-[10px] font-bold text-blue-400 uppercase text-center leading-tight">CMB<br>(IWT Hybrid)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Area (Right) -->
+                <div class="lg:col-span-5 flex flex-col gap-6">
+                    <!-- Stat 1 -->
+                    <div class="bg-cardbg border border-cardborder rounded-2xl p-6 flex justify-between items-center">
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Peak Fidelity (PSNR)</h4>
+                            <p class="text-xs text-slate-500">IWT + Hybrid GA-TS Output</p>
+                        </div>
+                        <div class="text-3xl font-mono font-bold text-white">54.17<span class="text-sm text-slate-500">dB</span></div>
+                    </div>
+
+                    <!-- Stat 2 -->
+                    <div class="bg-cardbg border border-cardborder rounded-2xl p-6 flex justify-between items-center">
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Sensitivity (NPCR)</h4>
+                            <p class="text-xs text-slate-500">Resistance to diff attacks</p>
+                        </div>
+                        <div class="text-3xl font-mono font-bold text-purple-400">99.61<span class="text-sm text-purple-600">%</span></div>
+                    </div>
+
+                    <!-- Stat 3 -->
+                    <div class="bg-cardbg border border-cardborder rounded-2xl p-6 flex justify-between items-center">
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Chaos Keyspace</h4>
+                            <p class="text-xs text-slate-500">3D Lorenz theoretical limit</p>
+                        </div>
+                        <div class="text-2xl font-mono font-bold text-green-400">~2<sup>279</sup></div>
+                    </div>
+                    
+                    <p class="text-[10px] text-slate-600 text-center px-4 mt-2">
+                        * Evaluation metrics computed against standard datasets demonstrating substantial improvement over un-optimized spatial techniques.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Academic Credits -->
+        <section id="team" class="scroll-mt-32 pt-16 border-t border-slate-800">
+            <h3 class="text-xs font-mono tracking-[0.2em] text-slate-500 uppercase text-center mb-12">Academic Credits</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Guide -->
+                <div class="bg-cardbg border border-cardborder rounded-2xl p-8 text-center hover:bg-slate-800/50 transition-colors">
+                    <div class="w-16 h-16 mx-auto bg-slate-800 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-chalkboard-user text-slate-400 text-xl"></i>
+                    </div>
+                    <div class="text-[10px] font-bold text-blue-500 uppercase tracking-widest mb-2">Project Guide</div>
+                    <h3 class="text-2xl font-bold text-white mb-1">Madhu Sharma</h3>
+                    <p class="text-sm text-slate-500">Mentor, Dept. of CSE</p>
+                </div>
+
+                <!-- Student -->
+                <div class="bg-cardbg border border-cardborder rounded-2xl p-8 text-center hover:bg-slate-800/50 transition-colors">
+                    <div class="w-16 h-16 mx-auto bg-slate-800 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-laptop-code text-slate-400 text-xl"></i>
+                    </div>
+                    <div class="text-[10px] font-bold text-purple-500 uppercase tracking-widest mb-2">Lead Researcher</div>
+                    <h3 class="text-2xl font-bold text-white mb-1">Aaryan Kalra</h3>
+                    <p class="text-sm text-slate-500">Reg: 23FE10CSE00739</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-16 text-[10px] font-mono text-slate-600 uppercase tracking-widest">
+                Manipal University Jaipur • PBL 2026
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>
